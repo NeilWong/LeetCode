@@ -1,0 +1,33 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def removeElements(self, head, val):
+        """
+        :type head: ListNode
+        :type val: int
+        :rtype: ListNode
+        """
+        if head is None:
+            return 
+        while head != None and head.val == val:
+            head = head.next
+        current = head
+        while current != None and current.next != None:
+            if current.next.val == val:
+                current.next = current.next.next
+            else:
+                current = current.next
+        return head
+        
+        
+   #Notes:
+    #Check first if head is None, if so return 
+    #Advance head to a point so that it is not equal to the val itself
+    #Set var current equal to head and
+      # if its next node's val is equal to val, set it equal to next.next
+      # otherwise advance current a node forward
+     #return the head
