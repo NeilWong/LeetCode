@@ -1,0 +1,32 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def oddEvenList(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        if head != None:
+            odd = head
+            even = head.next
+            temp = even
+            while even != None and even.next != None:
+                odd.next = even.next
+                odd = odd.next
+                even.next = odd.next
+                even = even.next
+            odd.next = temp
+        return head
+        
+    #Notes
+    # O(Node) Time O(1) Space
+    # The idea is to link the odd nodes to every other odd node and 
+      # every even node to every other even node first
+      # by the end you will have two disconnected parts, the odd connection of nodes and the even ones
+      # using temp, which was set to head.next in the beginning, you can link the even nodes
+      # to the end of the odd nodes -> resulting in odd nodes on the left side and even on the right and in the same order 
+      # as the original linkedlist
