@@ -25,7 +25,8 @@ class Solution(object):
        #Notes:
         # Advance lead by "n" nodes ahead so that it will reach the end first, with the tail being precisely
         # the "nth" node away from the end
-          # If lead.next is None, it means that the index to remove is the head, so return head.next
+          # If lead.next is None, it means that the index to remove is the head, so return head.next (the lead has reached the end of the linkedlist
+          # so tail starts at the index/node that is to be removed, aka the head)
         # After advancing the lead, begin advancing lead and tail at the same pace until lead.next is not None (so that it's possible)
         # to change tail.next = tail.next.next without the exception of accesing None.next)
         # Finally change tail.next to tail.next.next and return head
