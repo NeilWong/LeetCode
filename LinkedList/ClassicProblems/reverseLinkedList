@@ -1,0 +1,31 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def reverseList(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        if head is None:
+            return []
+        current = head
+        while current.next != None:
+            prev = head
+            head = current.next
+            current.next = head.next
+            head.next = prev
+        return head
+        
+# Notes:
+  # If the head is None, return head/None/[]
+  # Set two temporary vars(current and prev) equal to head, then iterate until current is equal to None
+    # 1 -> 2 -> 3 -> 4 ->5
+    # 1)Set head equal to current.next immediately 
+    # 2)Set current.next to head.next in order to progress -> Because current.next needs to point to head.next to proceed (current points to head as of now)
+    # 3)Set head.next now so that 
+    # 4)Finally set head.next to the var prev which holds the previous head, so that the LinkedList can grow
+  # O(N) Runtime & O(1) Space
