@@ -1,0 +1,35 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def mergeTwoLists(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        store = []
+        while l1:
+            store.append(l1.val)
+            l1 = l1.next
+        while l2:
+            store.append(l2.val)
+            l2 = l2.next
+        store.sort()
+        cur = ref = ListNode(0)
+        for val in store:
+            cur.next = ListNode(val)
+            cur = cur.next
+        return ref.next
+        
+        #Notes
+          #O((l1+l2)log(l1+l2)) Runtime - O(N) Space
+          # Create an array to store values of each node
+            #iterate through both LinkedLists, storing the values of each node within store
+            #sort store
+          # Create one two vars cur and ref to equal a ListNode of any value
+            #iterate through store and add to cur each Node(val)
+          # return ref.next (ref itself is a dummy node)
