@@ -1,0 +1,39 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def addTwoNumbers(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        num1 = ""
+        num2 = ""
+        while l1:
+            num1 += str(l1.val)
+            l1 = l1.next
+        while l2:
+            num2 += str(l2.val)
+            l2 = l2.next
+        num1 = num1[::-1]
+        num2 = num2[::-1]
+        total = int(num1) + int(num2)
+        total = str(total)[::-1]
+        cur  = dummy = ListNode(0)
+        for x in str(total):
+            cur.next = ListNode(int(x))
+            cur = cur.next
+        return dummy.next
+        
+        #Notes 
+         # O(l1+l2)? Time - O(l1+l2) Space
+         # Create strings to store the string version of each number that each LinkedList represents
+         # reverse each string and add their int casted versions to a total
+         # reverse str casted total
+         # create cur and dummy nodes
+         # go through str casted total and add to cur each Node(val)
+         # return dummy's next node(which is the actual head)
