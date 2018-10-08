@@ -1,0 +1,23 @@
+        d = {}
+        e = {}
+        for x in s:
+            if x not in d:
+                d[x] = 1
+            else:
+                d[x] += 1
+        for x in t:
+            if x not in e:
+                e[x] = 1
+            else:
+                e[x] += 1
+            
+        if len(d) != len(e):
+            return False
+        for key, value in e.items():
+            print(key,value)
+            if key not in d:
+                return False
+            if e[key] != d[key]:
+                return False
+            
+        return True
